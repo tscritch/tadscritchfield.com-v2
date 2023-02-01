@@ -1,12 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Source Code Pro', Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,56 +19,110 @@
   -webkit-text-size-adjust: 100%;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.button {
+  display: inline-flex;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 1);
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  font-weight: 700;
+  user-select: none;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.button p {
+  padding: 0;
+  margin: 0;
+  padding-right: 12px;
+}
+
+.parent {
+  position: relative;
+  display: flex;
+  height: 32px;
+  width: 32px;
+  align-items: center;
+  justify-content: center;
+}
+
+.mask{
+  -webkit-mask-image: radial-gradient(circle, rgb(255, 255, 255) 50%, rgba(0, 0, 0, 0) 50%);
+  mask-image: radial-gradient(circle, rgb(255, 255, 255) 50%, rgba(0, 0, 0, 0) 50%);
+}
+.mask video {
+  opacity: 0;
+}
+.button:hover .mask video {
+  opacity: 1;
+}
+.parent svg {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  width: 18px;
+  height: 18px;
+  stroke: black;
+}
+
+.bobby-blobby {
+  height: 200px;
+}
+#bobby-blobby-canvas {
+  /* transform: scale(0.3) translate(-50%, -80%); */
+  transform: scale(0.4) translate(0%, 100%);
+}
+/* @media (min-width: 640px) {
+  #bobby-blobby-canvas {
+    transform: scale(0.4) translate(0%, -80%);
   }
-  a:hover {
-    color: #747bff;
+}
+@media (min-width: 768px) {
+  #bobby-blobby-canvas {
+    transform: scale(0.5) translate(0%, -80%);
   }
-  button {
-    background-color: #f9f9f9;
+} */
+
+.blob-hidder {
+  position: absolute;
+  bottom: -380px;
+  right: -385px;
+  width: 143px;
+  height: 40px;
+  background-color: rgb(255, 255, 255);
+  z-index: 1;
+}
+@media (min-width: 1024px) {
+  #bobby-blobby-canvas {
+    transform: scale(0.7) translate(0%, -50%);
   }
+  .blob-hidder {
+    position: absolute;
+    bottom: -381px;
+    right: 17px;
+    width: 144px;
+    height: 38px;
+    background-color: rgb(255, 255, 255);
+    z-index: 1;
+  }
+}
+
+a {
+  @apply text-neutral-400 transition-all duration-500;
+  cursor: pointer;
+}
+@media (hover: hover) {
+  footer a:hover {
+    @apply text-black;
+    
+  }
+}
+
+li > a {
+  @apply text-black;
+}
+li:hover > a {
+  @apply text-white;
+  /* transition-timing-function: cubic-bezier(0.65, 0, 1, -0.15); */
 }
