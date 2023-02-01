@@ -16,7 +16,7 @@ export const Work = () => {
   });
 
   return (
-    <section className="px-8 md:px-20 py-32 flex gap-x-2">
+    <section className="px-8 md:px-20 pt-4 pb-16 flex gap-x-2">
       <div className="flex flex-col items-center justify-start gap-y-2">
         {firstCol}
       </div>
