@@ -17,13 +17,13 @@ export const Work = () => {
 
   return (
     <section className="px-8 md:px-20 pt-4 pb-16 flex gap-x-2">
-      <div className="flex flex-col items-center justify-start gap-y-2">
+      <div className="flex-grow flex flex-col items-center justify-start gap-y-2">
         {firstCol}
       </div>
-      <div className="flex flex-col items-center justify-start gap-y-2">
+      <div className="flex-grow flex flex-col items-center justify-start gap-y-2">
         {secondCol}
       </div>
-      <div className="flex flex-col items-center justify-start gap-y-2">
+      <div className="flex-grow flex flex-col items-center justify-start gap-y-2">
         {thirdCol}
       </div>
     </section>
@@ -37,9 +37,10 @@ function getEveryThirdElement(array: WorkData[], offset: number) {
 const WorkItem = ({ data }: { data: WorkData }) => {
   return (
     <a href={data.link} target="_blank">
-      <div className="text-black border rounded-lg p-1 shadow-sm">
+      <div className="text-black border rounded-lg p-1 shadow-sm min-w-[20rem]">
         <div className="relative">
           <div className="rounded overflow-hidden border mb-1">
+            <div className="absolute w-full h-full bg-transparent hover:bg-slate-100 hover:bg-opacity-50 transition-all duration-500 z-10" />
             {data.video ? (
               <video
                 src={data.video}
@@ -47,17 +48,17 @@ const WorkItem = ({ data }: { data: WorkData }) => {
                 autoPlay
                 muted
                 loop
-                className="w-80 md:w-[420px]"
+                className="w-80 md:w-[420px] z-0"
               />
             ) : (
               <img
                 src={data.image}
                 alt={data.title}
-                className="w-80 md:w-[420px]"
+                className="w-80 md:w-[420px] z-0"
               />
             )}
           </div>
-          <div className="w-full flex justify-between items-center p-4 absolute bottom-0 text-xs">
+          <div className="rounded w-[calc(100%-2px)] flex justify-between items-center p-4 mb-[1px] ml-[1px] absolute bottom-0 text-xs bg-gradient-to-t from-white to-transparent">
             <h3 className="">{data.title}</h3>
             <p className="text-neutral-600">{data.description}</p>
           </div>
