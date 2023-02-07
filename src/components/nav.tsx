@@ -1,48 +1,8 @@
 import { NavLink } from "react-router-dom";
 
-const getColor = (item: HTMLElement) => {
-  const link = item.querySelector("a")!;
-  switch (link.getAttribute("href")) {
-    case "/about":
-      return "#BE8EFF";
-    case "/work":
-      return "#FF7A5A";
-    case "/tools":
-      return "#4ACDF6";
-    case "/inspo":
-      return "#FACC2E";
-    default:
-      return "#fff";
-  }
-};
-
-const links = [
-  {
-    name: "about",
-    color: "bg-[#BE8EFF]",
-    href: "about",
-  },
-  {
-    name: "work",
-    color: "bg-[#FF7A5A]",
-    href: "work",
-  },
-  {
-    name: "tools",
-    color: "bg-[#4ACDF6]",
-    href: "https://tools.tadscritchfield.com",
-    external: true,
-  },
-  {
-    name: "inspo",
-    color: "bg-[#FACC2E]",
-    href: "inspo",
-  },
-];
-
 export const Nav = () => {
   return (
-    <nav className="w-80 h-9 bg-neutral-100 rounded-full flex items-center z-30 overflow-hidden">
+    <nav className="w-80 h-9 bg-white rounded-full flex items-center z-30 overflow-hidden">
       <ul
         id="nav-list"
         className="w-full px-1 flex items-center justify-between relative"

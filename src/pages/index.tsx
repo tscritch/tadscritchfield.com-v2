@@ -1,7 +1,7 @@
 export const Home = () => {
   return (
     <div className="z-0">
-      <section className="px-8 md:px-20 py-32 flex items-center justify-between flex-col lg:flex-row">
+      <section className="px-8 md:px-20 py-36 flex items-center justify-between flex-col lg:flex-row opacity-0 animate-fade-in animation-delay-500">
         <div className="me z-20">
           <h1 className="mb-8 text-sm w-80 text-center lg:text-base lg:text-left">
             Hi I'm Tad! I love creating.
