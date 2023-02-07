@@ -1,23 +1,39 @@
+import Masonry from "react-masonry-css";
 import { WorkData, workData } from "./work-data";
 
 export const Work = () => {
-  const firstColData = getEveryThirdElement(workData, 0);
-  const secondColData = getEveryThirdElement(workData, 1);
-  const thirdColData = getEveryThirdElement(workData, 2);
+  // const firstColData = getEveryThirdElement(workData, 0);
+  // const secondColData = getEveryThirdElement(workData, 1);
+  // const thirdColData = getEveryThirdElement(workData, 2);
 
-  const firstCol = firstColData.map((data) => {
-    return <WorkItem key={data.title} data={data} />;
-  });
-  const secondCol = secondColData.map((data) => {
-    return <WorkItem key={data.title} data={data} />;
-  });
-  const thirdCol = thirdColData.map((data) => {
+  // const firstCol = firstColData.map((data) => {
+  //   return <WorkItem key={data.title} data={data} />;
+  // });
+  // const secondCol = secondColData.map((data) => {
+  //   return <WorkItem key={data.title} data={data} />;
+  // });
+  // const thirdCol = thirdColData.map((data) => {
+  //   return <WorkItem key={data.title} data={data} />;
+  // });
+  const items = workData.map((data) => {
     return <WorkItem key={data.title} data={data} />;
   });
 
   return (
-    <section className="px-8 md:px-20 pt-4 pb-16 flex gap-x-2">
-      <div className="flex-grow flex flex-col items-center justify-start gap-y-2">
+    <section className="px-8 md:px-20 pt-4 pb-16">
+      <Masonry
+        breakpointCols={{
+          default: 3,
+          // 1200: 3,
+          1200: 2,
+          786: 1,
+        }}
+        className="flex w-auto gap-x-2 -ml-2"
+        columnClassName="my-masonry-grid_column"
+      >
+        {items}
+      </Masonry>
+      {/* <div className="flex-grow flex flex-col items-center justify-start gap-y-2">
         {firstCol}
       </div>
       <div className="flex-grow flex flex-col items-center justify-start gap-y-2">
@@ -25,7 +41,7 @@ export const Work = () => {
       </div>
       <div className="flex-grow flex flex-col items-center justify-start gap-y-2">
         {thirdCol}
-      </div>
+      </div> */}
     </section>
   );
 };
@@ -37,9 +53,9 @@ function getEveryThirdElement(array: WorkData[], offset: number) {
 const WorkItem = ({ data }: { data: WorkData }) => {
   return (
     <a href={data.link} target="_blank">
-      <div className="text-black bg-white border rounded-lg p-1 shadow-sm min-w-[20rem]">
+      <div className="text-black bg-white border rounded-lg p-1 shadow-sm min-w-[16rem] mb-2">
         <div className="relative">
-          <div className="rounded overflow-hidden border mb-1">
+          <div className="rounded overflow-hidden border mb-1 flex justify-center">
             <div className="absolute w-full h-full bg-transparent hover:bg-slate-100 hover:bg-opacity-80 transition-all duration-500 z-10 group flex justify-center items-center">
               <p className="text-sm opacity-0 group-hover:opacity-100 transition-all duration-500 text-slate-600 text-center px-8">
                 {data.description}
@@ -52,14 +68,10 @@ const WorkItem = ({ data }: { data: WorkData }) => {
                 autoPlay
                 muted
                 loop
-                className="w-80 md:w-[420px] z-0"
+                className="z-0"
               />
             ) : (
-              <img
-                src={data.image}
-                alt={data.title}
-                className="w-80 md:w-[420px] z-0"
-              />
+              <img src={data.image} alt={data.title} className="z-0" />
             )}
           </div>
           <div className="rounded w-[calc(100%-2px)] flex justify-between items-center p-4 py-5 mb-[1px] ml-[1px] absolute bottom-0 text-xs bg-gradient-to-t from-white to-transparent">
