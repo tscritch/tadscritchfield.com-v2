@@ -1,3 +1,5 @@
+import { CrazyButton } from "../components/crazy-button";
+
 export const Home = () => {
   return (
     <div className="z-0">
@@ -8,6 +10,7 @@ export const Home = () => {
             <br />
             designer - engineer - musician
           </h1>
+          <CrazyButton />
         </div>
         <div className="bobby-blobby relative flex justify-center z-10">
           <div id="bobby-blobby-canvas">

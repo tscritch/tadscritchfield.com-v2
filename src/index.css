@@ -22,49 +22,50 @@
 
 
 .button {
-  display: inline-flex;
+  display: flex;
   border-radius: 999px;
   border: 1px solid rgba(0, 0, 0, 1);
   justify-content: center;
   align-items: center;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   font-weight: 700;
   user-select: none;
   cursor: pointer;
+  position: relative;
+  height: 32px;
+  @apply text-black
 }
 
 .button p {
   padding: 0;
   margin: 0;
-  padding-right: 12px;
+  z-index: 10;
+  /* padding-right: 12px; */
 }
 
-.parent {
-  position: relative;
-  display: flex;
-  height: 32px;
-  width: 32px;
-  align-items: center;
-  justify-content: center;
+.button svg {
+  margin-top: 3px;
+  margin-left: 6px;
+  z-index: 10;
 }
 
-.mask{
-  -webkit-mask-image: radial-gradient(circle, rgb(255, 255, 255) 50%, rgba(0, 0, 0, 0) 50%);
-  mask-image: radial-gradient(circle, rgb(255, 255, 255) 50%, rgba(0, 0, 0, 0) 50%);
-}
-.mask video {
-  opacity: 0;
-}
-.button:hover .mask video {
-  opacity: 1;
-}
-.parent svg {
+.mask {
   position: absolute;
-  top: 7px;
-  left: 7px;
-  width: 18px;
-  height: 18px;
-  stroke: black;
+  top: 2.5px;
+  left: 2px;
+  height: 24px;
+  width: 100%;
+  mask-image: url(/button-mask.svg);
+  mask-repeat: no-repeat;
+}
+.button video {
+  z-index: 0;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+}
+.button:hover video {
+  opacity: 1;
 }
 
 .bobby-blobby {
