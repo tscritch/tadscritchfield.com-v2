@@ -73,6 +73,7 @@ export const workData: WorkData[] = [
     // video: "/videos/dead-simple-react-calendar.mp4",
     link: "https://algebingo.com",
     linkText: "visit",
+    dark: true,
   },
   {
     title: "TestPrep",

@@ -53,7 +53,7 @@ function getEveryThirdElement(array: WorkData[], offset: number) {
 const WorkItem = ({ data }: { data: WorkData }) => {
   return (
     <a href={data.link} target="_blank">
-      <div className="text-black bg-white border rounded-lg p-1 shadow-sm min-w-[16rem] mb-2">
+      <div className="text-black bg-white border rounded-lg p-1 shadow-sm min-w-[16rem] mb-2 opacity-0 animate-fade-in">
         <div className="relative">
           <div className="rounded overflow-hidden border mb-1 flex justify-center">
             <div className="absolute w-full h-full bg-transparent hover:bg-slate-100 hover:bg-opacity-80 transition-all duration-500 z-10 group flex justify-center items-center">
@@ -74,9 +74,17 @@ const WorkItem = ({ data }: { data: WorkData }) => {
               <img src={data.image} alt={data.title} className="z-0" />
             )}
           </div>
-          <div className="rounded w-[calc(100%-2px)] flex justify-between items-center p-4 py-5 mb-[1px] ml-[1px] absolute bottom-0 text-xs bg-gradient-to-t from-white to-transparent">
-            <h3 className="">{data.title}</h3>
-            <p className="text-slate-600">{data.date}</p>
+          <div
+            className={`rounded w-[calc(100%-2px)] flex justify-between items-center p-4 py-5 mb-[1px] ml-[1px] absolute bottom-0 text-xs bg-gradient-to-t ${
+              data.dark ? "from-slate-800" : "from-white"
+            } to-transparent`}
+          >
+            <h3 className={data.dark ? "text-white" : "text-current"}>
+              {data.title}
+            </h3>
+            <p className={data.dark ? "text-slate-100" : "text-slate-600"}>
+              {data.date}
+            </p>
           </div>
         </div>
         <div className="flex justify-center items-center bg-slate-100 text-slate-800 text-base rounded px-2 py-1 text-center transition-colors duration-500 hover:bg-slate-200">
