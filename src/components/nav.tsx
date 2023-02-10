@@ -34,9 +34,9 @@ export const Nav = () => {
         <li className="rounded-full transition-all duration-700">
           <NavLink
             to="inspo"
-            className={(isActive) =>
+            className={({ isActive }) =>
               `px-3 py-1 rounded-full ${
-                !isActive ? "bg-[#FACC2E] text-white" : "hover:bg-[#FACC2E]"
+                isActive ? "bg-[#FACC2E] text-white" : "hover:bg-[#FACC2E]"
               }`
             }
           >
