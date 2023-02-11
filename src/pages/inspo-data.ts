@@ -1,23 +1,27 @@
 import musicData from "./music-data.json";
 import movieData from "./movie-data.json";
+import bookData from "./book-data.json";
+import gameData from "./game-data.json";
 
 type InspoItemType = "movie" | "book" | "game" | "music";
 export interface InspoItem {
   title: string;
   description?: string;
   image: string;
-  links: Record<string, string>;
+  links: Record<string, string | undefined>;
   type: InspoItemType;
   date: Date;
 }
 
 export async function getInspoData(): Promise<InspoItem[]> {
-  const [music, movies] = await Promise.all([
+  const [music, movies, books, games] = await Promise.all([
     getInspoAlbums(),
     getInspoMovies(),
+    getInspoBooks(),
+    getInspoGames(),
   ]);
 
-  return [...music, ...movies].sort(
+  return [...music, ...movies, ...books, ...games].sort(
     (a, b) => b.date.getTime() - a.date.getTime()
   );
 }
@@ -57,28 +61,32 @@ export async function getInspoMovies(): Promise<InspoItem[]> {
   return items;
 }
 
-// const bookList: InspoItem[] = [
-//   {
-//     title: "The Alchemist",
-//     description: "Paulo Coelho",
-//     image: "https://m.media-amazon.com/images/I/51ZQZQ1QFNL.jpg",
-//     links: {
-//       amazon: "https://www.amazon.com/Alchemist-Paulo-Coelho/dp/0061122416",
-//     },
-//     type: "book",
-//   },
-//   date: "1988-10-01",
-// ];
+export async function getInspoBooks(): Promise<InspoItem[]> {
+  const items = bookData.items.map((item) => ({
+    title: item.title,
+    description: item.description,
+    image: item.image,
+    links: {
+      amazon: item.link,
+    },
+    type: "book" as InspoItemType,
+    date: new Date(item.date),
+  }));
+  return items;
+}
 
-// const gameList: InspoItem[] = [
-//   {
-//     title: "The Last of Us",
-//     description: "Naughty Dog",
-//     image:
-//       "https://upload.wikimedia.org/wikipedia/en/4/4f/The_Last_of_Us_cover.jpg",
-//     links: {
-//       amazon: "https://www.amazon.com/Last-Us-PlayStation-3/dp/B004P2YV7E",
-//     },
-//     type: "game",
-//   },
-// ];
+export async function getInspoGames(): Promise<InspoItem[]> {
+  const items = gameData.items.map((item) => ({
+    title: item.title,
+    description: item.description,
+    image: item.image,
+    links: {
+      wiki: item.wiki,
+      steam: item.steam,
+      twitch: item.twitch,
+    },
+    type: "game" as InspoItemType,
+    date: new Date(item.date),
+  }));
+  return items;
+}

@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "title": "Wild at Heart",
+      "description": "Discovering the secrets of a man's soul",
+      "link": "https://a.co/d/jgw0b9K",
+      "image": "/images/books/wild-at-heart.jpg",
+      "date": "2001-01-01"
+    },
+    {
+      "title": "The Last Arrow",
+      "description": "Save nothing for the next life",
+      "link": "https://a.co/d/fvRHr6B",
+      "image": "/images/books/the-last-arrow.jpeg",
+      "date": "2017-09-05"
+    },
+    {
+      "title": "Crucial Conversations",
+      "description": "Tools for talking when stakes are high",
+      "link": "https://a.co/d/iHex9RT",
+      "image": "/images/books/crucial-conversations.jpeg",
+      "date": "2013-08-01"
+    }
+  ]
+}

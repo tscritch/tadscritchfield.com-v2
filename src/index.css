@@ -27,6 +27,7 @@
 
 
 .button {
+  width: 260px;
   display: flex;
   border-radius: 999px;
   border: 1px solid rgba(0, 0, 0, 1);
@@ -38,28 +39,32 @@
   cursor: pointer;
   position: relative;
   height: 32px;
-  @apply text-black
+  @apply text-black;
+}
+.button:hover {
+  @apply text-white border-transparent;
 }
 
 .button p {
   padding: 0;
   margin: 0;
   z-index: 10;
-  /* padding-right: 12px; */
+  padding-top: 3.5px;
 }
 
 .button svg {
-  margin-top: 3px;
+  margin-top: 6.5px;
   margin-left: 6px;
   z-index: 10;
+  /* padding-top: 3.5px; */
 }
 
 .mask {
   position: absolute;
-  top: 2.5px;
-  left: 2px;
-  height: 24px;
-  width: 100%;
+  top: -1px;
+  left: -1px;
+  height: 32px;
+  width: 101%;
   mask-image: url(/button-mask.svg);
   mask-repeat: no-repeat;
 }
@@ -68,6 +73,7 @@
   position: absolute;
   opacity: 0;
   top: 0;
+  @apply transition-all duration-500;
 }
 .button:hover video {
   opacity: 1;

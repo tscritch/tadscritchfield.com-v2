@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "title": "A Link to the Past",
+      "description": "The Legend of Zelda",
+      "wiki": "https://en.wikipedia.org/wiki/The_Legend_of_Zelda:_A_Link_to_the_Past",
+      "twitch": "",
+      "image": "/images/games/alttp.jpg",
+      "date": "2001-01-01"
+    },
+    {
+      "title": "Factorio",
+      "description": "Factorio is a game about building and creating automated factories to produce items of increasing complexity, within an infinite 2D world. Use your imagination to design your factory, combine simple elements into ingenious structures, and finally protect it from the creatures who don't really like you.",
+      "steam": "https://store.steampowered.com/app/427520/Factorio/",
+      "twitch": "",
+      "image": "/images/games/factorio.jpeg",
+      "date": "2020-08-14"
+    },
+    {
+      "title": "Portal",
+      "description": "Portal™ is a new single player game from Valve. Set in the mysterious Aperture Science Laboratories, Portal has been called one of the most innovative new games on the horizon and will offer gamers hours of unique gameplay.",
+      "steam": "https://store.steampowered.com/app/400/Portal/",
+      "twitch": "",
+      "image": "/images/games/portal.jpeg",
+      "date": "2007-10-07"
+    }
+  ]
+}

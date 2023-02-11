@@ -10,7 +10,7 @@ export const CrazyButton = () => {
             muted
             loop
             height="32"
-            width="318"
+            width="340"
           ></video>
           <p>Ok, let's see it!</p>
           <svg
