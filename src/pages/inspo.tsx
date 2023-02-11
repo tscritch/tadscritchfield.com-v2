@@ -40,10 +40,11 @@ const InspoItem = ({ data }: { data: InspoItem }) => {
   return (
     <div className="text-black bg-white border rounded-lg p-1 shadow-sm min-w-[16rem] mb-2 opacity-0 animate-fade-in">
       <div className="relative">
-        <div className="rounded overflow-hidden border mb-1 flex justify-center">
+        <div className="rounded overflow-hidden border flex justify-center">
           <div className="absolute w-full h-full bg-transparent hover:bg-slate-100 hover:bg-opacity-80 transition-all duration-500 z-10 group flex justify-center items-center">
             <p className="text-sm opacity-0 group-hover:opacity-100 transition-all duration-500 text-slate-600 text-center px-8">
-              <h3>{data.title}</h3>
+              <h3 className="pb-2 font-bold">{data.title}</h3>
+              <p className="pb-2">{data.date.getFullYear()}</p>
               <p>{data.description}</p>
             </p>
           </div>

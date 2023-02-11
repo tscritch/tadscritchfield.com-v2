@@ -1,4 +1,5 @@
 import musicData from "./music-data.json";
+import movieData from "./movie-data.json";
 
 type InspoItemType = "movie" | "book" | "game" | "music";
 export interface InspoItem {
@@ -11,9 +12,14 @@ export interface InspoItem {
 }
 
 export async function getInspoData(): Promise<InspoItem[]> {
-  const [music] = await Promise.all([getInspoAlbums()]);
+  const [music, movies] = await Promise.all([
+    getInspoAlbums(),
+    getInspoMovies(),
+  ]);
 
-  return [...music].sort((a, b) => b.date.getTime() - a.date.getTime());
+  return [...music, ...movies].sort(
+    (a, b) => b.date.getTime() - a.date.getTime()
+  );
 }
 
 // get album data from spotify for a given playlist
@@ -34,26 +40,22 @@ export async function getInspoAlbums(): Promise<InspoItem[]> {
   return items;
 }
 
-// get movie data from letterboxd for a given list
-// export async function getInspoMovies(): Promise<InspoItem[]> {
-//   const response = await fetch(
-//     "https://api.letterboxd.com/api/v0/films/liked/by/username?per-page=100",
-//     {
-//       headers: {
-//         Authorization: `Bearer ${process.env.LETTERBOXD_ACCESS_TOKEN}`,
-//       },
-//     }
-//   );
-//   const data = await response.json();
-//   const items = data.items.map((item) => ({
-//     title: item.name,
-//     description: item.year,
-//     image: item.poster.url,
-//     link: item.url,
-//     type: "movie",
-//   }));
-//   return items;
-// }
+export async function getInspoMovies(): Promise<InspoItem[]> {
+  const _listId = "4omR72tpYWD4w2ndhh5VW0";
+  // go to this to run the fetch a copy the output below
+  // https://developers.themoviedb.org/3/lists/get-list-details
+  const items = movieData.items.map((item) => ({
+    title: item.title,
+    description: item.overview,
+    image: `https://image.tmdb.org/t/p/w500/${item.poster_path}`,
+    links: {
+      tmdb: `https://www.themoviedb.org/movie/${item.id}`,
+    },
+    type: "movie" as InspoItemType,
+    date: new Date(item.release_date),
+  }));
+  return items;
+}
 
 // const bookList: InspoItem[] = [
 //   {
