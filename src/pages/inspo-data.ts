@@ -50,10 +50,10 @@ export async function getInspoMovies(): Promise<InspoItem[]> {
   // https://developers.themoviedb.org/3/lists/get-list-details
   const items = movieData.items.map((item) => ({
     title: item.title,
-    description: item.overview,
     image: `https://image.tmdb.org/t/p/w500/${item.poster_path}`,
     links: {
-      tmdb: `https://www.themoviedb.org/movie/${item.id}`,
+      // tmdb: `https://www.themoviedb.org/movie/${item.id}`,
+      letterboxd: item.letterboxd,
     },
     type: "movie" as InspoItemType,
     date: new Date(item.release_date),
@@ -81,7 +81,6 @@ export async function getInspoGames(): Promise<InspoItem[]> {
     description: item.description,
     image: item.image,
     links: {
-      wiki: item.wiki,
       steam: item.steam,
       twitch: item.twitch,
     },

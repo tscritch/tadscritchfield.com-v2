@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Masonry from "react-masonry-css";
+import { Icon, IconName } from "../components/icons";
 import { getInspoData, InspoItem } from "./inspo-data";
 
 export const Inspo = () => {
@@ -46,6 +47,28 @@ const InspoItem = ({ data }: { data: InspoItem }) => {
               <h3 className="pb-2 font-bold">{data.title}</h3>
               <p className="pb-2">{data.date.getFullYear()}</p>
               <p>{data.description}</p>
+              {/* svg icons as links to matching item link */}
+              <div className="flex items-center justify-center gap-x-4 pt-2">
+                {data.links && (
+                  <>
+                    {Object.keys(data.links).map((lk) => {
+                      const l = data.links[lk];
+                      if (!l) return null;
+
+                      return (
+                        <a
+                          href={l}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-gray-800"
+                        >
+                          <Icon name={lk as IconName} size={24} />
+                        </a>
+                      );
+                    })}
+                  </>
+                )}
+              </div>
             </p>
           </div>
           <img src={data.image} alt={data.title} className="z-0" />
