@@ -48,7 +48,7 @@ const InspoItem = ({ data }: { data: InspoItem }) => {
               <p className="pb-2">{data.date.getFullYear()}</p>
               <p>{data.description}</p>
               {/* svg icons as links to matching item link */}
-              <div className="flex items-center justify-center gap-x-4 pt-2">
+              <div className="flex items-center justify-center gap-x-4 pt-4">
                 {data.links && (
                   <>
                     {Object.keys(data.links).map((lk) => {
