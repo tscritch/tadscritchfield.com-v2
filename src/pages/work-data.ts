@@ -22,7 +22,7 @@ export const workData: WorkData[] = [
     title: "Trove",
     description: "An elixir library for simplifying Ecto search queiries.",
     date: "February 2023",
-    image: "/images/song-writer-companion.jpg",
+    image: "/images/trove.jpg",
     link: "https://github.com/smartrent/trove",
     linkText: "visit",
   },
