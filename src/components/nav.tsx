@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export const Nav = () => {
   return (
-    <nav className="w-80 h-9 bg-white rounded-full flex items-center z-30 overflow-hidden">
+    <nav className="w-80 h-9 bg-white rounded-full flex items-center z-30 overflow-hidden scale-90 sm:scale-100">
       <ul
         id="nav-list"
         className="w-full px-1 flex items-center justify-between relative"
